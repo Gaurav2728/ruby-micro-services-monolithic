@@ -1,23 +1,21 @@
 development:
-  adapter: postgresql
+  adapter: sqlite3
   encoding: unicode
-  database: ruby_microservices_development
+  database: db/development.sqlite3
   pool: 5
-  username: postgres
-  password:
+  timeout: 5000
 
 test:
-  adapter: postgresql
+  adapter: sqlite3
   encoding: unicode
-  database: ruby_microservices_test
+  database: db/test.sqlite3
   pool: 5
-  username: postgres
-  password:
+  timeout: 5000
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: ruby_microservices_production
+  database: ruby_microservices
   pool: 5
   username: postgres
   password:
