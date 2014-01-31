@@ -1,0 +1,25 @@
+<h1>Users#index</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%- @users.each do |user| -%>
+    <tr>
+      <td><%= user.full_name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.phone_number %></td>
+    </tr>
+  <%- end -%>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3"><a href="<%= new_user_path %>">Create new user</a></td>
+    </tr>
+  </tfoot>
+</table>

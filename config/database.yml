@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: ruby_microservices_development
+  pool: 5
+  username: postgres
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: ruby_microservices_test
+  pool: 5
+  username: postgres
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: ruby_microservices_production
+  pool: 5
+  username: postgres
+  password:
