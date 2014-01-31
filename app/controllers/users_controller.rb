@@ -7,9 +7,27 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(post_params)
-    @user.save
-    flash[:notice] = "Successfully created user with name #{@user.full_name}"
+    user = User.new(user_params)
+    user.save
+    flash[:notice] = "Successfully created user with name #{user.full_name}"
+    redirect_to action: 'index'
+  end
+
+  def update
+    user = User.find(params[:id])
+    user.update(user_params)
+    flash[:notice] = "Successfully edited user with name #{user.full_name}"
+    redirect_to action: 'edit'
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    flash[:notice] = "Successfully deleted user with name #{user.full_name}"
     redirect_to action: 'index'
   end
 
@@ -19,7 +37,7 @@ class UsersController < ApplicationController
   end
 
 private
-  def post_params
+  def user_params
     params.require(:user).permit(:full_name, :phone_number, :email)
   end
 
