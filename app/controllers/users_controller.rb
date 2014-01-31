@@ -9,6 +9,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(post_params)
     @user.save
+    flash[:notice] = "Successfully created user with name #{@user.full_name}"
+    redirect_to action: 'index'
+  end
+
+  def reset
+    User.destroy_all
     redirect_to action: 'index'
   end
 
