@@ -31,11 +31,6 @@ class UsersController < ApplicationController
     redirect_to action: 'index'
   end
 
-  def reset
-    User.destroy_all
-    redirect_to action: 'index'
-  end
-
 private
   def user_params
     params.require(:user).permit(:full_name, :phone_number, :email)
