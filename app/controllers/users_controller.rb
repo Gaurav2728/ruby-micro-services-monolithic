@@ -7,16 +7,24 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    user.save
-    flash[:notice] = "Successfully created user with name #{user.full_name}"
+    begin
+      user = User.new(user_params)
+      user.save!
+      flash[:notice] = "Successfully created user with name #{user.full_name}"
+    rescue ActiveRecord::RecordInvalid => e
+      flash[:notice] = "Error creating user: #{e.message}"
+    end
     redirect_to action: 'index'
   end
 
   def update
-    user = User.find(params[:id])
-    user.update(user_params)
-    flash[:notice] = "Successfully edited user with name #{user.full_name}"
+    begin
+      user = User.find(params[:id])
+      user.update! user_params
+      flash[:notice] = "Successfully edited user with name #{user.full_name}"
+    rescue ActiveRecord::RecordInvalid => e
+      flash[:notice] = "Error editing user: #{e.message}"
+    end
     redirect_to action: 'edit'
   end
 
