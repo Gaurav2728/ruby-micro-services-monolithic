@@ -1,13 +1,13 @@
 development:
-  adapter: sqlite3
+  adapter: postgresql
   encoding: unicode
-  database: db/development.sqlite3
+  database: basicsoa_development
   pool: 5
-  timeout: 5000
+  username: postgres
 
 test:
-  adapter: sqlite3
+  adapter: postgresql
   encoding: unicode
-  database: db/test.sqlite3
+  database: basicsoa_development
   pool: 5
-  timeout: 5000
+  username: postgres
