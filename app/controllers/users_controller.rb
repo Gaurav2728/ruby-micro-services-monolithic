@@ -8,12 +8,12 @@ class UsersController < ApplicationController
 
   def create
     begin
-      user = User.new(user_params)
-      user.save!
+      user = User.create!(user_params)
       flash[:notice] = "Successfully created user with name #{user.full_name}"
     rescue ActiveRecord::RecordInvalid => e
       flash[:notice] = "Error creating user: #{e.message}"
     end
+
     redirect_to action: 'index'
   end
 
@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     rescue ActiveRecord::RecordInvalid => e
       flash[:notice] = "Error editing user: #{e.message}"
     end
+
     redirect_to action: 'edit'
   end
 
